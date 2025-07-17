@@ -36,6 +36,20 @@ jobs:
         run: |
           jupyter nbconvert --to notebook --execute notebook_mlops_pipeline.ipynb --output executed_notebook.ipynb --ExecutePreprocessor.allow_errors=True --debug
 
+      - name: Upload executed notebook
+        uses: actions/upload-artifact@v4
+        with:
+          name: executed-notebook
+          path: executed_notebook.ipynb
+
+
       - name: Verificar modelo salvo
         run: |
           ls -l model.joblib || echo "Arquivo model.joblib não encontrado"
+
+      - name: Upload executed notebook
+        uses: actions/upload-artifact@v4
+        with:
+          name: executed-notebook
+          path: executed_notebook.ipynb
+
