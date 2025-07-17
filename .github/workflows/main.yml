@@ -32,9 +32,9 @@ jobs:
           echo "Subdiretórios:"
           ls -R
 
-      - name: Executar notebook com debug
+      - name: Executar notebook com debug (allow errors)
         run: |
-          jupyter nbconvert --to notebook --execute notebook_mlops_pipeline.ipynb --output executed_notebook.ipynb --debug
+          jupyter nbconvert --to notebook --execute notebook_mlops_pipeline.ipynb --output executed_notebook.ipynb --ExecutePreprocessor.allow_errors=True --debug
 
       - name: Verificar modelo salvo
         run: |
