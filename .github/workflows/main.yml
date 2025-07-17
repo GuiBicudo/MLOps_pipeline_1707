@@ -25,10 +25,17 @@ jobs:
           pip install -r requirements.txt
           pip install notebook nbconvert
 
-      - name: Executar notebook
+      - name: Verificar arquivos no diretório
         run: |
-          jupyter nbconvert --to notebook --execute notebook_mlops_pipeline.ipynb --output executed_notebook.ipynb
+          echo "Conteúdo do diretório atual:"
+          ls -la
+          echo "Subdiretórios:"
+          ls -R
+
+      - name: Executar notebook com debug
+        run: |
+          jupyter nbconvert --to notebook --execute notebook_mlops_pipeline.ipynb --output executed_notebook.ipynb --debug
 
       - name: Verificar modelo salvo
         run: |
-          ls -l model.joblib
+          ls -l model.joblib || echo "Arquivo model.joblib não encontrado"
