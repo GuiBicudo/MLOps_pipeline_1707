@@ -20,8 +20,4 @@ def test_model_predicts():
 
     assert preds.shape == (5,)
     assert np.all(preds >= 0)
-
-if __name__ == "__main__":
-    test_model_exists()
-    test_model_predicts()
-    print("✅ Todos os testes passaram.")
+    
